@@ -47,35 +47,47 @@ Evaluate the model with the testing data.
 ### Register Number:
 ```python
 class NeuralNet(nn.Module):
-    def __init__(self):
+  def __init__(self):
         super().__init__()
-        #Include your code here
+        self.fc1 = nn.Linear(1, 12)
+        self.fc2 = nn.Linear(12, 10)
+        self.fc3 = nn.Linear(10, 14)
+        self.fc4 = nn.Linear(14, 1)
+        self.relu = nn.ReLU()
+        self.history={'loss':[]}
 
+  def forward(self, x):
+        x = self.relu(self.fc1(x))
+        x = self.relu(self.fc2(x))
+        x = self.relu(self.fc3(x))
+        x = self.fc4(x)
+        return x
 
+Jeba=NeuralNet()
+criterion = nn.MSELoss()
+optimizer = optim.RMSprop(Jeba.parameters(), lr=0.001)
 
-# Initialize the Model, Loss Function, and Optimizer
+def train_model(Jeba, X_train, y_train, criterion, optimizer, epochs=2000):
+    for epoch in range(epochs):
+        optimizer.zero_grad()
+        loss = criterion(Jeba(X_train), y_train)
+        loss.backward()
+        optimizer.step()
 
-
-
-def train_model(ai_brain, X_train, y_train, criterion, optimizer, epochs=2000):
-    #Include your code here
-
-
+        Jeba.history['loss'].append(loss.item())
+        if epoch % 200 == 0:
+            print(f'Epoch [{epoch}/{epochs}], Loss: {loss.item():.6f}')
+train_model(Jeba, X_train_tensor, y_train_tensor, criterion, optimizer)
 
 ```
 ## Dataset Information
 
-Include screenshot of the dataset
+<img width="561" height="237" alt="data" src="https://github.com/user-attachments/assets/1d3fcd44-1fe6-4b29-baa8-dfb3cceee334" />
 
 ## OUTPUT
-
-### Training Loss Vs Iteration Plot
-
-Include your plot here
-
-### New Sample Data Prediction
-
-Include your sample input and output here
+<img width="621" height="365" alt="ex-111" src="https://github.com/user-attachments/assets/d5a8b58d-4ddd-4a50-8fa0-24a4a6033ca9" />
+<img width="582" height="456" alt="Ex-1" src="https://github.com/user-attachments/assets/91321bd4-24a1-4673-a44a-b54659be2403" />
+<img width="588" height="29" alt="ex-12" src="https://github.com/user-attachments/assets/7b89fa86-a412-4e16-832e-ada5cdfb0a96" />
 
 ## RESULT
 
