@@ -87,11 +87,13 @@ train_model(Jeba, X_train_tensor, y_train_tensor, criterion, optimizer)
 ## OUTPUT
 
 <img width="621" height="354" alt="ex-111" src="https://github.com/user-attachments/assets/81f1da54-2b0d-49f9-aab4-81bef920c9e4" />
+
 ## Training Loss Vs Iteration Plot
 <img width="582" height="456" alt="Ex-1" src="https://github.com/user-attachments/assets/91321bd4-24a1-4673-a44a-b54659be2403" />
 
 
 <img width="588" height="29" alt="ex-12" src="https://github.com/user-attachments/assets/7b89fa86-a412-4e16-832e-ada5cdfb0a96" />
+
 ## New Data Sample Prediction :
 <img width="593" height="23" alt="pred" src="https://github.com/user-attachments/assets/3aa47dde-11fb-4fd1-9af3-70e1afaac182" />
 
